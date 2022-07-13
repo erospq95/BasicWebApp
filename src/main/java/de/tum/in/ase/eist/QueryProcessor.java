@@ -16,6 +16,7 @@ public class QueryProcessor {
             return "Eros";
         } else if (query.contains("plus")){
             // here we get a list of words
+            query = query.replace(",","");
             String[] words = query.split(" ");
             int sum = 0;
             for(String word : words){
@@ -28,8 +29,19 @@ public class QueryProcessor {
             }
             return String.valueOf(sum);
         } else if (query.contains("largest")){
-
+            int max = -1;
+            String[] words = query.split(" ");
+            for (String word : words){
+                try{
+                    int number = Integer.parseInt(word);
+                    max = number > max ? number : max;
+                } catch(Exception e){
+                    //
+                }
+            }
+            return String.valueOf(max);
         }
+
             // Add a new comment here, please don't remove it please}
         return "";
         }
